@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street &amp; Stitch</title>
+    <script>
+        (function () {
+            var theme;
+            try { theme = localStorage.getItem('street-stitch-theme'); } catch (e) {}
+            if (theme !== 'light' && theme !== 'dark') {
+                theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <img src="logo-light.png" alt="Street &amp; Stitch Logo" class="logo">
+            <h2>Street &amp; Stitch</h2>
+        </div>
+        <nav>
+            <a href="#">Home</a> |
+            <a href="#shop">Shop</a> |
+            <a href="#size-chart">Size Chart</a> |
+            <a href="#about">About</a> |
+            <a href="#checkout">Cart (<span id="cart-count">0</span>)</a>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+            <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+    </header>
+
+    <hr>
+
+    <main>
+
+        <section>
+            <h1>Elevate Your Everyday Style</h1>
+            <p>Discover our curated collection of sustainable, high-quality essentials designed to fit your modern lifestyle.</p>
+            <a href="#shop">Shop the Collection</a>
+            <br><br>
+            <img src="upcoming.jpg" alt="Upcoming Collection" width="600" height="500">
+        </section>
+
+        <hr>
+
+        <section id="shop">
+            <h2>New Arrivals</h2>
+
+            <article data-id="tee" data-name="Classic Cotton Tee" data-price="550">
+                <img src="cottont.jpg" alt="Classic Cotton Tee" width="300" height="200">
+                <h3>Classic Cotton Tee</h3>
+                <p>Made from 100% organic cotton, offering ultimate comfort and an effortless, structured fit.</p>
+                <div class="product-details" hidden>
+                    <p>The Classic Cotton Tee is cut from 100% organic cotton that stays soft wash after wash. A structured, mid-weight knit holds its shape without feeling stiff, and the ribbed crew neck keeps its line through everyday wear. Wear it on its own or layer it under a jacket or hoodie.</p>
+                    <ul>
+                        <li><strong>Fabric:</strong> 100% organic cotton</li>
+                        <li><strong>Fit:</strong> Regular, structured</li>
+                        <li><strong>Care:</strong> Machine wash cold, tumble dry low</li>
+                        <li><strong>Sizes:</strong> S, M, L, XL</li>
+                    </ul>
+                </div>
+                <div class="product-buy">
+                    <span class="price">₱550.00</span>
+                    <select aria-label="Size for Classic Cotton Tee">
+                        <option value="">Select size</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button type="button" class="add-to-cart">Add to Cart</button>
+                    <span class="product-msg" role="status"></span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article data-id="denim" data-name="Oversized Denim Jacket" data-price="800">
+                <img src="dj.jpg" alt="Denim Jacket" width="300" height="200">
+                <h3>Oversized Denim Jacket</h3>
+                <p>A timeless wardrobe staple crafted from durable, vintage-wash denim with functional pockets.</p>
+                <div class="product-details" hidden>
+                    <p>Our Oversized Denim Jacket is a timeless staple in durable, vintage-wash denim. The relaxed, boxy cut with dropped shoulders makes it easy to layer over tees and hoodies, and the functional pockets keep your essentials close. The wash softens with every wear, so it only gets better with time.</p>
+                    <ul>
+                        <li><strong>Fabric:</strong> Vintage-wash denim</li>
+                        <li><strong>Fit:</strong> Oversized, boxy</li>
+                        <li><strong>Features:</strong> Functional chest and side pockets, button front</li>
+                        <li><strong>Care:</strong> Machine wash cold inside out, line dry</li>
+                        <li><strong>Sizes:</strong> XS, S, M, L</li>
+                    </ul>
+                </div>
+                <div class="product-buy">
+                    <span class="price">₱800.00</span>
+                    <select aria-label="Size for Oversized Denim Jacket">
+                        <option value="">Select size</option>
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <button type="button" class="add-to-cart">Add to Cart</button>
+                    <span class="product-msg" role="status"></span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article data-id="hoodie" data-name="Relaxed Knit Hoodie" data-price="750">
+                <img src="hoodie.jpg" alt="Knit Hoodie" width="300" height="200">
+                <h3>Relaxed Knit Hoodie</h3>
+                <p>Perfect for layering, this heavy-knit premium fleece hoodie brings warmth to chilly days.</p>
+                <div class="product-details" hidden>
+                    <p>The Relaxed Knit Hoodie is made from a heavy-knit premium fleece with a soft, brushed inside that traps warmth on chilly days. The relaxed fit and roomy hood make it ideal for layering, while the ribbed cuffs and hem keep everything in place.</p>
+                    <ul>
+                        <li><strong>Fabric:</strong> Heavy-knit premium fleece</li>
+                        <li><strong>Fit:</strong> Relaxed</li>
+                        <li><strong>Features:</strong> Drawcord hood, kangaroo pocket, ribbed cuffs and hem</li>
+                        <li><strong>Care:</strong> Wash cold with similar colors, tumble dry low</li>
+                        <li><strong>Sizes:</strong> S, M, L, XL, XXL</li>
+                    </ul>
+                </div>
+                <div class="product-buy">
+                    <span class="price">₱750.00</span>
+                    <select aria-label="Size for Relaxed Knit Hoodie">
+                        <option value="">Select size</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                        <option>XXL</option>
+                    </select>
+                    <button type="button" class="add-to-cart">Add to Cart</button>
+                    <span class="product-msg" role="status"></span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article data-id="graphic" data-name="Graphic Print Tee" data-price="600">
+                <img src="graphic.jpg" alt="Graphic Print Tee" width="300" height="200">
+                <h3>Graphic Print Tee</h3>
+                <p>A soft cotton tee with a bold front graphic that turns any outfit into a statement.</p>
+                <div class="product-details" hidden>
+                    <p>The Graphic Print Tee pairs our soft, breathable cotton with a bold front print made to stay vivid wash after wash. The regular fit and ribbed crew neck make it an easy everyday piece, whether you dress it up under a jacket or keep it casual.</p>
+                    <ul>
+                        <li><strong>Fabric:</strong> Soft cotton jersey</li>
+                        <li><strong>Fit:</strong> Regular</li>
+                        <li><strong>Features:</strong> Front graphic print, ribbed crew neck</li>
+                        <li><strong>Care:</strong> Machine wash cold inside out, tumble dry low</li>
+                        <li><strong>Sizes:</strong> S, M, L, XL, XXL</li>
+                    </ul>
+                </div>
+                <div class="product-buy">
+                    <span class="price">₱600.00</span>
+                    <select aria-label="Size for Graphic Print Tee">
+                        <option value="">Select size</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                        <option>XXL</option>
+                    </select>
+                    <button type="button" class="add-to-cart">Add to Cart</button>
+                    <span class="product-msg" role="status"></span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article data-id="boxy" data-name="Boxy Cut Tee" data-price="650">
+                <img src="boxy.jpg" alt="Boxy Cut Tee" width="300" height="200">
+                <h3>Boxy Cut Tee</h3>
+                <p>A heavyweight cotton tee with a wide, cropped-length boxy silhouette and dropped shoulders.</p>
+                <div class="product-details" hidden>
+                    <p>The Boxy Cut Tee is built on a heavyweight cotton with real structure. The wide, slightly cropped silhouette and dropped shoulders give it a clean, modern drape that looks great with relaxed trousers or layered under an open jacket.</p>
+                    <ul>
+                        <li><strong>Fabric:</strong> Heavyweight cotton</li>
+                        <li><strong>Fit:</strong> Boxy, relaxed through the body</li>
+                        <li><strong>Features:</strong> Dropped shoulders, ribbed collar, slightly cropped length</li>
+                        <li><strong>Care:</strong> Machine wash cold, tumble dry low</li>
+                        <li><strong>Sizes:</strong> S, M, L, XL</li>
+                    </ul>
+                </div>
+                <div class="product-buy">
+                    <span class="price">₱650.00</span>
+                    <select aria-label="Size for Boxy Cut Tee">
+                        <option value="">Select size</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button type="button" class="add-to-cart">Add to Cart</button>
+                    <span class="product-msg" role="status"></span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article data-id="cap" data-name="Everyday Cap" data-price="500">
+                <img src="cap.jpg" alt="Everyday Cap" width="300" height="200">
+                <h3>Everyday Cap</h3>
+                <p>A clean six-panel cap with an embroidered logo and an adjustable fit for all-day wear.</p>
+                <div class="product-details" hidden>
+                    <p>The Everyday Cap is a clean, low-profile six-panel design in durable cotton twill. A subtle embroidered logo sits on the front and the adjustable strap at the back gives a comfortable fit for most head sizes.</p>
+                    <ul>
+                        <li><strong>Fabric:</strong> Cotton twill</li>
+                        <li><strong>Fit:</strong> Adjustable strap, one size fits most</li>
+                        <li><strong>Features:</strong> Embroidered logo, curved brim, breathable eyelets</li>
+                        <li><strong>Care:</strong> Spot clean or hand wash, air dry</li>
+                        <li><strong>Size:</strong> One size</li>
+                    </ul>
+                </div>
+                <div class="product-buy">
+                    <span class="price">₱500.00</span>
+                    <select aria-label="Size for Everyday Cap">
+                        <option>One Size</option>
+                    </select>
+                    <button type="button" class="add-to-cart">Add to Cart</button>
+                    <span class="product-msg" role="status"></span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article data-id="beanie" data-name="Ribbed Knit Beanie" data-price="500">
+                <img src="beanie.jpg" alt="Ribbed Knit Beanie" width="300" height="200">
+                <h3>Ribbed Knit Beanie</h3>
+                <p>A stretchy ribbed beanie that keeps you warm and adds an easy finishing touch to any look.</p>
+                <div class="product-details" hidden>
+                    <p>The Ribbed Knit Beanie is made from a soft, stretchy rib knit that holds its shape and sits comfortably against the skin. Wear it folded for a snug fit or slouched for a relaxed look. It pairs naturally with our hoodies and denim jacket.</p>
+                    <ul>
+                        <li><strong>Fabric:</strong> Soft ribbed knit</li>
+                        <li><strong>Fit:</strong> Stretchy, one size fits most</li>
+                        <li><strong>Features:</strong> Foldable cuff, woven logo label</li>
+                        <li><strong>Care:</strong> Hand wash cold, lay flat to dry</li>
+                        <li><strong>Size:</strong> One size</li>
+                    </ul>
+                </div>
+                <div class="product-buy">
+                    <span class="price">₱500.00</span>
+                    <select aria-label="Size for Ribbed Knit Beanie">
+                        <option>One Size</option>
+                    </select>
+                    <button type="button" class="add-to-cart">Add to Cart</button>
+                    <span class="product-msg" role="status"></span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article data-id="backpack" data-name="Everyday Backpack" data-price="750">
+                <img src="bp.jpg" alt="Everyday Backpack" width="300" height="200">
+                <h3>Everyday Backpack</h3>
+                <p>A durable, roomy backpack with a padded laptop sleeve, built for school, work and weekend trips.</p>
+                <div class="product-details" hidden>
+                    <p>The Everyday Backpack is built for the daily routine. A hard-wearing water-resistant fabric protects your things, the padded laptop sleeve keeps your device safe, and the adjustable padded straps keep the load comfortable on long days.</p>
+                    <ul>
+                        <li><strong>Fabric:</strong> Water-resistant, durable canvas</li>
+                        <li><strong>Capacity:</strong> About 20 liters</li>
+                        <li><strong>Features:</strong> Padded laptop sleeve, front zip pocket, side bottle pockets, adjustable padded straps</li>
+                        <li><strong>Care:</strong> Wipe clean with a damp cloth, air dry</li>
+                        <li><strong>Size:</strong> One size</li>
+                    </ul>
+                </div>
+                <div class="product-buy">
+                    <span class="price">₱750.00</span>
+                    <select aria-label="Size for Everyday Backpack">
+                        <option>One Size</option>
+                    </select>
+                    <button type="button" class="add-to-cart">Add to Cart</button>
+                    <span class="product-msg" role="status"></span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+        </section>
+
+        <hr>
+
+        <section id="about">
+            <h2>Our Story</h2>
+            <img src="studio.jpg" alt="Inside the Street &amp; Stitch design studio" width="300" height="200">
+            <p>At Street &amp; Stitch, we believe in slow fashion. Our garments are ethically sourced, meticulously designed, and built to last beyond the season.</p>
+            <details class="story-more">
+                <summary>
+                    <span class="more">Read More</span>
+                    <span class="less">Read Less</span>
+                </summary>
+                <p>Every piece starts as a sketch. We keep refining the fit, the fabric and the finishing until it feels right to wear and still looks good wash after wash.</p>
+                <p>Streetwear shouldn&rsquo;t be disposable. That&rsquo;s why we choose honest materials like organic cotton, durable denim and heavy knits, and cut them in shapes you&rsquo;ll want to wear every season, not just this one.</p>
+                <p>Thank you for wearing Street &amp; Stitch.</p>
+            </details>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Pricing &amp; Available Sizes</h2>
+            <table border="1" cellpadding="8">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Available Sizes</th>
+                        <th>Price (PHP)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Classic Cotton Tee</td>
+                        <td>S, M, L, XL</td>
+                        <td>₱550.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oversized Denim Jacket</td>
+                        <td>XS, S, M, L</td>
+                        <td>₱800.00</td>
+                    </tr>
+                    <tr>
+                        <td>Relaxed Knit Hoodie</td>
+                        <td>S, M, L, XL, XXL</td>
+                        <td>₱750.00</td>
+                    </tr>
+                    <tr>
+                        <td>Graphic Print Tee</td>
+                        <td>S, M, L, XL, XXL</td>
+                        <td>₱600.00</td>
+                    </tr>
+                    <tr>
+                        <td>Boxy Cut Tee</td>
+                        <td>S, M, L, XL</td>
+                        <td>₱650.00</td>
+                    </tr>
+                    <tr>
+                        <td>Everyday Cap</td>
+                        <td>One Size</td>
+                        <td>₱500.00</td>
+                    </tr>
+                    <tr>
+                        <td>Ribbed Knit Beanie</td>
+                        <td>One Size</td>
+                        <td>₱500.00</td>
+                    </tr>
+                    <tr>
+                        <td>Everyday Backpack</td>
+                        <td>One Size</td>
+                        <td>₱750.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <section id="size-chart">
+            <h2>Size Chart</h2>
+            <p>Garment measurements in centimeters and inches. If you are between sizes, we suggest sizing up for a relaxed fit. Caps, beanies and backpacks come in one size.</p>
+            <table class="size-table">
+                <thead>
+                    <tr>
+                        <th>Size</th>
+                        <th>Chest</th>
+                        <th>Length</th>
+                        <th>Shoulder</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XS</td>
+                        <td>86 cm / 34 in</td>
+                        <td>66 cm / 26 in</td>
+                        <td>40 cm / 15.7 in</td>
+                    </tr>
+                    <tr>
+                        <td>S</td>
+                        <td>91 cm / 36 in</td>
+                        <td>69 cm / 27 in</td>
+                        <td>42 cm / 16.5 in</td>
+                    </tr>
+                    <tr>
+                        <td>M</td>
+                        <td>97 cm / 38 in</td>
+                        <td>72 cm / 28.5 in</td>
+                        <td>44 cm / 17.3 in</td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>104 cm / 41 in</td>
+                        <td>74 cm / 29 in</td>
+                        <td>46 cm / 18.1 in</td>
+                    </tr>
+                    <tr>
+                        <td>XL</td>
+                        <td>112 cm / 44 in</td>
+                        <td>76 cm / 30 in</td>
+                        <td>48 cm / 18.9 in</td>
+                    </tr>
+                    <tr>
+                        <td>XXL</td>
+                        <td>120 cm / 47 in</td>
+                        <td>78 cm / 30.7 in</td>
+                        <td>50 cm / 19.7 in</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="size-layout">
+                <figure class="size-illustration">
+                    <svg viewBox="0 0 400 300" role="img" aria-labelledby="size-svg-title">
+                        <title id="size-svg-title">Garment diagram showing where chest, length and shoulder are measured</title>
+                        <defs>
+                            <marker id="dim-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+                            </marker>
+                        </defs>
+
+                        <path class="shirt" d="M112 40 L60 58 L24 104 L58 128 L72 108 L72 262 L228 262 L228 108 L242 128 L276 104 L240 58 L188 40 Q150 66 112 40 Z"/>
+                        <path class="shirt-collar" d="M112 40 Q150 72 188 40"/>
+
+                        <!-- C: Shoulder -->
+                        <line class="guide" x1="60" y1="58" x2="60" y2="28"/>
+                        <line class="guide" x1="240" y1="58" x2="240" y2="28"/>
+                        <line class="dim" x1="60" y1="34" x2="240" y2="34" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
+                        <text class="dim-label" x="150" y="22" text-anchor="middle"><tspan class="dim-letter">C</tspan> Shoulder <tspan class="dim-value" id="sz-shoulder"></tspan></text>
+
+                        <!-- A: Chest -->
+                        <line class="dim" x1="72" y1="118" x2="228" y2="118" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
+                        <text class="dim-label" x="150" y="108" text-anchor="middle"><tspan class="dim-letter">A</tspan> Chest</text>
+                        <text class="dim-value" x="150" y="138" text-anchor="middle" id="sz-chest"></text>
+
+                        <!-- B: Length -->
+                        <line class="guide" x1="190" y1="40" x2="304" y2="40"/>
+                        <line class="guide" x1="230" y1="262" x2="304" y2="262"/>
+                        <line class="dim" x1="300" y1="40" x2="300" y2="262" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
+                        <text class="dim-label" x="312" y="146"><tspan class="dim-letter">B</tspan> Length</text>
+                        <text class="dim-value" x="312" y="164" id="sz-length"></text>
+                    </svg>
+                    <div class="size-pills" id="size-pills" role="group" aria-label="Choose a size to preview"></div>
+                    <figcaption id="size-caption">Tap a size to see its measurements on the diagram.</figcaption>
+                </figure>
+
+                <div class="measure-guide">
+                    <h3>How to measure</h3>
+                    <ul>
+                        <li><strong>A &middot; Chest:</strong> measure around the fullest part of your chest, keeping the tape level under your arms.</li>
+                        <li><strong>B &middot; Length:</strong> measure from the highest point of the shoulder down to the hem.</li>
+                        <li><strong>C &middot; Shoulder:</strong> measure straight across the back from one shoulder edge to the other.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="checkout">
+            <h2>Your Cart &amp; Checkout</h2>
+
+            <div class="checkout-layout" id="checkout-layout">
+                <div class="cart-panel">
+                    <h3>Order Summary</h3>
+                    <p id="cart-empty">Your cart is empty. Pick a size and tap “Add to Cart” on any item in the shop.</p>
+                    <ul class="cart-items" id="cart-items"></ul>
+                    <dl class="cart-totals">
+                        <div>
+                            <dt>Subtotal</dt>
+                            <dd id="subtotal">₱0.00</dd>
+                        </div>
+                        <div>
+                            <dt>Shipping</dt>
+                            <dd id="shipping">₱0.00</dd>
+                        </div>
+                        <div class="total">
+                            <dt>Total</dt>
+                            <dd id="total">₱0.00</dd>
+                        </div>
+                    </dl>
+                    <p class="cart-note" id="shipping-note"></p>
+                </div>
+
+                <form class="checkout-form" id="checkout-form">
+                    <h3>Checkout</h3>
+
+                    <div class="form-step">
+                        <h4 class="step-title">Contact</h4>
+                        <div class="field">
+                            <label for="full-name">Full name</label>
+                            <input type="text" id="full-name" autocomplete="name" required>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="checkout-email">Email</label>
+                                <input type="email" id="checkout-email" autocomplete="email" placeholder="you@example.com" required>
+                            </div>
+                            <div class="field">
+                                <label for="phone">Mobile number</label>
+                                <input type="tel" id="phone" autocomplete="tel" inputmode="tel" placeholder="09171234567" pattern="^(\+63|0)9\d{9}$" title="Mobile number, for example 09171234567" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-step">
+                        <h4 class="step-title">Delivery address</h4>
+                        <div class="field">
+                            <label for="address">Street address</label>
+                            <input type="text" id="address" autocomplete="street-address" placeholder="House no., street, barangay" required>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="city">City / Municipality</label>
+                                <select id="city" autocomplete="address-level2" required>
+                                    <option value="">Select city / municipality</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="province">Province</label>
+                                <input type="text" id="province" autocomplete="address-level1" required>
+                            </div>
+                            <div class="field">
+                                <label for="postal">Postal code</label>
+                                <input type="text" id="postal" autocomplete="postal-code" inputmode="numeric" maxlength="4" pattern="\d{4}" title="4-digit postal code" required>
+                            </div>
+                        </div>
+                        <div class="field" id="city-other-field" hidden>
+                            <label for="city-other">Your city / municipality</label>
+                            <input type="text" id="city-other" placeholder="Type your city or municipality">
+                        </div>
+                    </div>
+
+                    <fieldset class="payment form-step">
+                        <legend class="visually-hidden">Payment method</legend>
+                        <h4 class="step-title">Payment</h4>
+
+                        <div class="pay-options">
+                            <label class="pay-option">
+                                <input type="radio" name="payment" value="gcash" checked>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h12v4"/><path d="M3 7v11a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1H5a2 2 0 0 1-2-2z"/><circle cx="16.5" cy="14.5" r="1" fill="currentColor"/></svg>
+                                <span class="pay-name">GCash</span>
+                                <span class="pay-sub">E-wallet</span>
+                            </label>
+                            <label class="pay-option">
+                                <input type="radio" name="payment" value="maya">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h12v4"/><path d="M3 7v11a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1H5a2 2 0 0 1-2-2z"/><circle cx="16.5" cy="14.5" r="1" fill="currentColor"/></svg>
+                                <span class="pay-name">Maya</span>
+                                <span class="pay-sub">E-wallet</span>
+                            </label>
+                            <label class="pay-option">
+                                <input type="radio" name="payment" value="card">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg>
+                                <span class="pay-name">Card</span>
+                                <span class="pay-sub">Credit / Debit</span>
+                            </label>
+                            <label class="pay-option">
+                                <input type="radio" name="payment" value="cod">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9.5v.01M18 14.5v.01"/></svg>
+                                <span class="pay-name">Cash on Delivery</span>
+                                <span class="pay-sub">Pay when it arrives</span>
+                            </label>
+                        </div>
+
+                        <div class="card-fields" id="card-fields" hidden>
+                            <div class="field">
+                                <label for="card-name">Name on card</label>
+                                <input type="text" id="card-name" autocomplete="cc-name" data-card>
+                            </div>
+                            <div class="field">
+                                <label for="card-number">Card number</label>
+                                <input type="text" id="card-number" autocomplete="cc-number" inputmode="numeric" placeholder="1234 5678 9012 3456" pattern="[0-9 ]{13,23}" title="Card number" data-card>
+                            </div>
+                            <div class="field-row">
+                                <div class="field">
+                                    <label for="card-exp">Expiry (MM/YY)</label>
+                                    <input type="text" id="card-exp" autocomplete="cc-exp" inputmode="numeric" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/\d{2}" title="Expiry as MM/YY" maxlength="5" data-card>
+                                </div>
+                                <div class="field">
+                                    <label for="card-cvc">CVC</label>
+                                    <input type="text" id="card-cvc" autocomplete="cc-csc" inputmode="numeric" placeholder="123" pattern="\d{3,4}" title="3 or 4 digit security code" maxlength="4" data-card>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-submit">
+                        <button type="submit" class="place-order" id="place-order" disabled>Place Order</button>
+                        <p class="secure-note">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                            Your details are only used to process this order.
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="order-confirmation" id="order-confirmation" role="status" hidden>
+                <h3>Thank you for your order!</h3>
+                <p id="order-message"></p>
+                <a href="#shop">Continue shopping</a>
+            </div>
+        </section>
+
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>&copy; 2026 Street &amp; Stitch. All rights reserved.</p>
+    </footer>
+
+    <dialog class="product-modal" id="product-modal" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+            <img class="modal-image" id="modal-image" src="" alt="">
+            <div class="modal-info">
+                <h3 id="modal-title"></h3>
+                <span class="price" id="modal-price"></span>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-buy">
+                    <select id="modal-size" aria-label="Choose a size"></select>
+                    <button type="button" id="modal-add">Add to Cart</button>
+                    <span class="product-msg" id="modal-msg" role="status"></span>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
